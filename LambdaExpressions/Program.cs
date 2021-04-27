@@ -10,10 +10,9 @@ namespace LambdaExpressions
         {
             Console.WriteLine("Welcome to Lambda Expressions");
             List<Person> list = new List<Person>();
-           // AddingpersonDetails(list);
-            //IterateOverList(list);
-            RetrieveTop2Records(list);
-
+            AddingpersonDetails(list);
+            //RetrieveTop2Records(list);
+            RetrieveTeenageRecords(list);
         }
         //UC1-person management
         public static void AddingpersonDetails(List<Person> personlist)
@@ -25,7 +24,8 @@ namespace LambdaExpressions
             personlist.Add(new Person() { SSN = 2, Age = 23, Name = "Mahi", Address = "Chennai" });
             personlist.Add(new Person() { SSN = 7, Age = 24, Name = "Jhanu", Address = "Mumbai" });
             personlist.Add(new Person() { SSN = 3, Age = 35, Name = "gayi", Address = "Banglore" });
-         
+            //IterateOverList(personlist);
+
         }
         public static void IterateOverList(List<Person> personlist)
         {
@@ -38,11 +38,11 @@ namespace LambdaExpressions
 
                 }
             }
-            catch(Exception ex)
+            catch (Exception ex)
             {
                 Console.WriteLine(ex.Message);
             }
-           
+
 
         }
         //UC2 Retrieve top two records from the list for age less than 60
@@ -54,7 +54,23 @@ namespace LambdaExpressions
                 Console.WriteLine("Age\t" + person.Age + "Name\t" + person.Name + "\t" + "Address\t" + person.Address);
             }
         }
- 
-    }
+        //UC3 Retrieve all record from the list for age between 13 to 18 or less 
+        public static void RetrieveTeenageRecords(List<Person> list)
+        {
+            try
+            {
+                var result = list.FindAll(x => x.Age < 13 && x.Age < 18);
+                foreach (Person person in result)
+                {
+                    Console.WriteLine("Age\t" + person.Age + "Name\t" + person.Name + "\t" + "Address\t" + person.Address);
+                }
+            }
+            catch (Exception ex)
+            {
+                Console.WriteLine(ex.Message);
+            }
 
+        }
+
+    }
 }
