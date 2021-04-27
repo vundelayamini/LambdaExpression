@@ -12,8 +12,10 @@ namespace LambdaExpressions
             List<Person> list = new List<Person>();
             AddingpersonDetails(list);
             //RetrieveTop2Records(list);
-           // RetrieveTeenageRecords(list);
-            FindAvgAgeForAll(list);
+            //RetrieveTeenageRecords(list);
+            //FindAvgAgeForAll(list);
+            SearchPerson(list);
+
         }
         //UC1-person management
         public static void AddingpersonDetails(List<Person> personlist)
@@ -78,9 +80,7 @@ namespace LambdaExpressions
             try
             {
                 var result = list.Average(x => x.Age);
-
                 Console.WriteLine("Average age among all persons\t" + result);
-
             }
             catch (Exception ex)
             {
@@ -88,5 +88,32 @@ namespace LambdaExpressions
             }
 
         }
+        //UC5 Search for specific name present in the list or not
+        public static void SearchPerson(List<Person> list)
+        {
+            try
+            {
+                var person = list.Where(n => n.Name == "Jhanu").FirstOrDefault();
+                if (person != null)
+                {
+                    Console.WriteLine("Person present");
+                    Console.WriteLine("Age\t" + person.Age + "\t" + "Name\t" + person.Name + "\t" + "Address\t" + person.Address + "\t");
+                }
+                else
+                {
+                    Console.WriteLine("person not exist in the list");
+                }
+            }
+            catch (Exception ex)
+            {
+                Console.WriteLine(ex.Message);
+            }
+        }
+
+
     }
 }
+
+
+
+
