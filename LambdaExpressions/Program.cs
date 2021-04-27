@@ -14,7 +14,8 @@ namespace LambdaExpressions
             //RetrieveTop2Records(list);
             //RetrieveTeenageRecords(list);
             //FindAvgAgeForAll(list);
-            SearchPerson(list);
+            // SearchPerson(list);
+            SkipLessThan60(list);
 
         }
         //UC1-person management
@@ -110,9 +111,22 @@ namespace LambdaExpressions
             }
         }
 
+        //UC6-skip record from the list for age is lessthan 60
+        public static void SkipLessThan60(List<Person> list)
+        {
+            var result = list.FindAll(x => x.Age > 60);
+            foreach (Person person in result)
+            {
+                Console.WriteLine("Age\t" + person.Age + "\t" + "Name\t" + person.Name + "\t" + "Address\t" + person.Address + "\t");
+
+            }
+        }
+
+
 
     }
 }
+
 
 
 
