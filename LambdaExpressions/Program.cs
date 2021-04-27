@@ -1,5 +1,6 @@
 ﻿using System;
 using System.Collections.Generic;
+using System.Linq;
 
 namespace LambdaExpressions
 {
@@ -7,10 +8,11 @@ namespace LambdaExpressions
     {
         static void Main(string[] args)
         {
-            Console.WriteLine("Welcome to Lambda Expressions:");
+            Console.WriteLine("Welcome to Lambda Expressions");
             List<Person> list = new List<Person>();
-            AddingpersonDetails(list);
-            IterateOverList(list);
+           // AddingpersonDetails(list);
+            //IterateOverList(list);
+            RetrieveTop2Records(list);
 
         }
         //UC1-person management
@@ -23,7 +25,7 @@ namespace LambdaExpressions
             personlist.Add(new Person() { SSN = 2, Age = 23, Name = "Mahi", Address = "Chennai" });
             personlist.Add(new Person() { SSN = 7, Age = 24, Name = "Jhanu", Address = "Mumbai" });
             personlist.Add(new Person() { SSN = 3, Age = 35, Name = "gayi", Address = "Banglore" });
-            //IterateOverList
+         
         }
         public static void IterateOverList(List<Person> personlist)
         {
@@ -43,6 +45,16 @@ namespace LambdaExpressions
            
 
         }
+        //UC2 Retrieve top two records from the list for age less than 60
+        public static void RetrieveTop2Records(List<Person> list)
+        {
+            var result = list.FindAll(x => x.Age < 60).OrderBy(x => x.Age).Take(2);
+            foreach (Person person in result)
+            {
+                Console.WriteLine("Age\t" + person.Age + "Name\t" + person.Name + "\t" + "Address\t" + person.Address);
+            }
+        }
+ 
     }
-    
+
 }
