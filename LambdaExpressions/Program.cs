@@ -23,7 +23,6 @@ namespace LambdaExpressions
             personlist.Add(new Person() { SSN = 2, Age = 23, Name = "Mahi", Address = "Chennai" });
             personlist.Add(new Person() { SSN = 7, Age = 24, Name = "Jhanu", Address = "Mumbai" });
             personlist.Add(new Person() { SSN = 3, Age = 35, Name = "gayi", Address = "Banglore" });
-            //IterateOverList
         }
         public static void IterateOverList(List<Person> personlist)
         {
