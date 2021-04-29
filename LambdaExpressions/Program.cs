@@ -6,6 +6,7 @@ namespace LambdaExpressions
 {
     class Program
     {
+
         static void Main(string[] args)
         {
             Console.WriteLine("Welcome to Lambda Expressions");
@@ -15,7 +16,8 @@ namespace LambdaExpressions
             //RetrieveTeenageRecords(list);
             //FindAvgAgeForAll(list);
             // SearchPerson(list);
-            SkipLessThan60(list);
+           // SkipLessThan60(list);
+            RemovePerson(list);
 
         }
         //UC1-person management
@@ -81,7 +83,8 @@ namespace LambdaExpressions
             try
             {
                 var result = list.Average(x => x.Age);
-                Console.WriteLine("Average age among all persons\t" + result);
+                Console.WriteLine("Average age among all person  : \t" + result);
+
             }
             catch (Exception ex)
             {
@@ -90,7 +93,7 @@ namespace LambdaExpressions
 
         }
         //UC5 Search for specific name present in the list or not
-        public static void SearchPerson(List<Person> list)
+        public static Person SearchPerson(List<Person> list, string name)
         {
             try
             {
@@ -99,15 +102,18 @@ namespace LambdaExpressions
                 {
                     Console.WriteLine("Person present");
                     Console.WriteLine("Age\t" + person.Age + "\t" + "Name\t" + person.Name + "\t" + "Address\t" + person.Address + "\t");
+                    return person;
                 }
                 else
                 {
                     Console.WriteLine("person not exist in the list");
+                    return null;
+
                 }
             }
             catch (Exception ex)
             {
-                Console.WriteLine(ex.Message);
+                Console.WriteLine(ex);
             }
         }
 
@@ -121,6 +127,28 @@ namespace LambdaExpressions
 
             }
         }
+
+        //UC7-Remove specific name from the list
+        public static void RemovePerson(List<Person> list)
+        {
+            var remove = SearchPerson(list, "Mahi");
+            bool result = false;
+            if (remove != null)
+            {
+                result = list.Remove(remove);
+                //Console.WriteLine("Removed successfully.");
+            }
+            if (result)
+            {
+                Console.WriteLine("Removed Successfully");
+            }
+            else
+            {
+                Console.WriteLine("not Removed");
+            }
+        }
+       
+
 
 
 
